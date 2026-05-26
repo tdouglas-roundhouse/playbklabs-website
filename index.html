@@ -152,6 +152,14 @@ footer{padding:1.5rem 2.5rem;border-top:1px solid var(--border-light);display:fl
   footer{flex-direction:column;text-align:center}
 }
 </style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PTT9BR4N70"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-PTT9BR4N70');
+</script>
 </head>
 <body>
 
@@ -408,6 +416,7 @@ btn.addEventListener('click',function(){
   btn.textContent="You're on the list ✓";
   btn.style.background='#162636';
   inp.disabled=true;btn.disabled=true;
+  gtag('event','request_access',{event_category:'conversion',event_label:v});
 });
 </script>
 </body>
