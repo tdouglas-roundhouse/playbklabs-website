@@ -3,83 +3,85 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Playbk Labs — AI Deal Planning for AEs</title>
+<title>Playbk Labs — AI Deal Planning for Early-Stage Teams</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --navy:#0f1e2e;
-  --navy-2:#162636;
-  --navy-3:#1d3349;
-  --scarlet:#cc2200;
-  --scarlet-dim:rgba(204,34,0,0.12);
-  --gray-100:#f7f7f8;
-  --gray-200:#efefef;
-  --gray-300:#dcdcde;
-  --gray-500:#8a8a94;
-  --gray-700:#3d3d44;
+  --navy:#0f1e2e;--navy-2:#162636;
+  --scarlet:#cc2200;--scarlet-dim:rgba(204,34,0,0.1);
+  --gray-100:#f7f7f8;--gray-200:#efefef;--gray-300:#dcdcde;
+  --gray-500:#8a8a94;--gray-700:#3d3d44;
   --white:#ffffff;
-  --text-primary:#0f1e2e;
-  --text-muted:#5a6472;
-  --text-faint:#9aa3ac;
-  --border-light:rgba(0,0,0,0.07);
-  --border-mid:rgba(0,0,0,0.11);
-  --f:'Inter',sans-serif;
-  --r:10px;
-  --r-lg:16px;
+  --text-primary:#0f1e2e;--text-muted:#5a6472;--text-faint:#9aa3ac;
+  --border-light:rgba(0,0,0,0.07);--border-mid:rgba(0,0,0,0.11);
+  --f:'Inter',sans-serif;--r:10px;--r-lg:16px;
 }
 html{scroll-behavior:smooth}
 body{font-family:var(--f);background:var(--white);color:var(--text-primary);font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased}
 
-/* NAV */
 nav{background:rgba(255,255,255,0.97);backdrop-filter:blur(16px);border-bottom:1px solid var(--border-light);padding:0 2.5rem;height:60px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:200}
 .nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
 .nav-wm{font-size:1.1rem;font-weight:600;color:var(--navy);letter-spacing:-0.02em}
 .nav-links{display:flex;gap:2rem}
-.nav-links a{font-size:0.85rem;font-weight:400;color:var(--text-muted);text-decoration:none;letter-spacing:0.01em}
+.nav-links a{font-size:0.85rem;font-weight:400;color:var(--text-muted);text-decoration:none}
 .nav-links a:hover{color:var(--text-primary)}
-.nav-right{display:flex;align-items:center;gap:1rem}
-.nav-login{font-size:0.85rem;color:var(--text-muted);text-decoration:none;font-weight:400}
 .nav-cta{background:var(--navy);color:#fff;padding:8px 20px;border-radius:100px;font-size:0.85rem;font-weight:500;text-decoration:none;letter-spacing:-0.01em}
 
-/* HERO — dark field */
+/* HERO */
 .hero{background:var(--navy);padding:80px 2.5rem 72px;text-align:center;position:relative;overflow:hidden}
-.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 50% 100%, rgba(204,34,0,0.07) 0%, transparent 70%);pointer-events:none}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 50% 100%,rgba(204,34,0,0.07) 0%,transparent 70%);pointer-events:none}
 .hero-label{display:inline-flex;align-items:center;gap:6px;font-size:0.72rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.45);border:1px solid rgba(255,255,255,0.12);padding:5px 14px;border-radius:100px;margin-bottom:2rem}
 .hero-label span{width:5px;height:5px;border-radius:50%;background:var(--scarlet);display:inline-block}
 .hero h1{font-size:clamp(2.6rem,5vw,4rem);font-weight:600;line-height:1.05;letter-spacing:-0.035em;color:#fff;max-width:760px;margin:0 auto 1.25rem}
 .hero h1 em{font-style:normal;color:rgba(255,255,255,0.38)}
-.hero-sub{font-size:1.0625rem;color:rgba(255,255,255,0.5);max-width:480px;margin:0 auto 2.5rem;font-weight:300;line-height:1.7;letter-spacing:-0.01em}
+.hero-sub{font-size:1.0625rem;color:rgba(255,255,255,0.5);max-width:520px;margin:0 auto 2.5rem;font-weight:300;line-height:1.7;letter-spacing:-0.01em}
 .hero-btns{display:flex;gap:0.875rem;align-items:center;justify-content:center;flex-wrap:wrap}
 .btn-white{background:#fff;color:var(--navy);padding:12px 28px;border-radius:100px;font-size:0.9rem;font-weight:600;text-decoration:none;letter-spacing:-0.02em}
-.btn-outline{color:rgba(255,255,255,0.6);padding:12px 22px;border-radius:100px;font-size:0.9rem;font-weight:400;text-decoration:none;border:1px solid rgba(255,255,255,0.15);letter-spacing:-0.01em}
+.btn-outline{color:rgba(255,255,255,0.6);padding:12px 22px;border-radius:100px;font-size:0.9rem;font-weight:400;text-decoration:none;border:1px solid rgba(255,255,255,0.15)}
 .hero-proof{margin-top:2.5rem;font-size:0.72rem;color:rgba(255,255,255,0.25);letter-spacing:0.1em;text-transform:uppercase}
 .hero-proof span{color:rgba(255,255,255,0.4)}
 
-/* LOGO STRIP */
+/* STRIP */
 .strip{background:var(--navy-2);border-top:1px solid rgba(255,255,255,0.06);border-bottom:1px solid rgba(255,255,255,0.06);padding:14px 0;overflow:hidden;white-space:nowrap}
 .strip-inner{display:inline-flex;gap:3rem;animation:sc 26s linear infinite}
-.si{font-size:0.7rem;font-weight:500;letter-spacing:0.13em;text-transform:uppercase;color:rgba(255,255,255,0.22)}
-.si.hi{color:rgba(255,255,255,0.5)}
+.mi{font-size:0.7rem;font-weight:500;letter-spacing:0.13em;text-transform:uppercase;color:rgba(255,255,255,0.22)}
+.mi.hi{color:rgba(255,255,255,0.5)}
 .sd{color:var(--scarlet);opacity:0.6}
 @keyframes sc{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
-/* SECTION SHELL */
-.sec{padding:80px 2.5rem}
+/* AUDIENCE */
+.aud-sec{background:var(--white);padding:80px 2.5rem;border-bottom:1px solid var(--border-light)}
+.aud-inner{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.aud-tag{font-size:0.7rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--scarlet);margin-bottom:1rem}
+.aud-h2{font-size:clamp(1.8rem,3vw,2.5rem);font-weight:600;line-height:1.1;letter-spacing:-0.03em;color:var(--text-primary);margin-bottom:1.25rem}
+.aud-body{font-size:0.9375rem;color:var(--text-muted);line-height:1.8;font-weight:300;margin-bottom:1.5rem}
+.aud-callout{background:var(--gray-100);border-left:3px solid var(--scarlet);border-radius:0 var(--r) var(--r) 0;padding:1.25rem 1.5rem;font-size:0.9rem;color:var(--text-primary);font-weight:500;line-height:1.6;letter-spacing:-0.01em}
+.aud-stats{display:flex;flex-direction:column;gap:1.5rem}
+.stat{padding:1.75rem 2rem;background:var(--gray-100);border-radius:var(--r-lg);border:1px solid var(--border-light)}
+.stat-num{font-size:2.5rem;font-weight:600;color:var(--navy);letter-spacing:-0.04em;line-height:1;margin-bottom:0.4rem}
+.stat-num span{color:var(--scarlet)}
+.stat p{font-size:0.875rem;color:var(--text-muted);font-weight:300;line-height:1.6}
+
+/* PROBLEM */
+.prob-sec{background:var(--gray-100);padding:80px 2.5rem}
 .si-w{max-width:1080px;margin:0 auto}
 .sec-tag{font-size:0.7rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--scarlet);margin-bottom:1rem}
-.sec-h2{font-size:clamp(1.8rem,3vw,2.5rem);font-weight:600;line-height:1.1;letter-spacing:-0.03em;color:var(--text-primary);margin-bottom:1rem;max-width:560px}
-.sec-sub{font-size:1rem;color:var(--text-muted);max-width:500px;font-weight:300;line-height:1.7;margin-bottom:0}
-
-/* PROBLEM — 3 cards on gray */
-.prob-sec{background:var(--gray-100);padding:80px 2.5rem}
+.sec-h2{font-size:clamp(1.8rem,3vw,2.5rem);font-weight:600;line-height:1.1;letter-spacing:-0.03em;color:var(--text-primary);margin-bottom:0.75rem;max-width:620px}
+.sec-sub{font-size:1rem;color:var(--text-muted);max-width:560px;font-weight:300;line-height:1.7;margin-bottom:0}
 .prob-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem}
 .prob-card{background:var(--white);border:1px solid var(--border-light);border-radius:var(--r-lg);padding:2rem}
-.prob-card-num{font-size:0.72rem;font-weight:600;letter-spacing:0.1em;color:var(--gray-500);margin-bottom:1.25rem}
+.prob-num{font-size:0.72rem;font-weight:600;letter-spacing:0.1em;color:var(--gray-500);margin-bottom:1.25rem}
 .prob-card h3{font-size:1rem;font-weight:600;color:var(--text-primary);margin-bottom:0.5rem;letter-spacing:-0.02em}
 .prob-card p{font-size:0.875rem;color:var(--text-muted);line-height:1.7;font-weight:300}
-.prob-card-dot{width:32px;height:32px;border-radius:50%;background:var(--gray-100);display:flex;align-items:center;justify-content:center;margin-bottom:1.25rem;font-size:1rem}
+
+/* SOLUTION STATEMENT */
+.solve-sec{background:var(--navy);padding:64px 2.5rem;text-align:center}
+.solve-inner{max-width:720px;margin:0 auto}
+.solve-tag{font-size:0.7rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:rgba(204,34,0,0.7);margin-bottom:1.25rem}
+.solve-h2{font-size:clamp(1.6rem,3vw,2.25rem);font-weight:600;line-height:1.25;letter-spacing:-0.03em;color:#fff;margin-bottom:0}
+.solve-h2 em{font-style:normal;color:rgba(255,255,255,0.4)}
 
 /* PRODUCT PANELS */
 .panels{border-top:1px solid var(--border-light)}
@@ -91,24 +93,13 @@ nav{background:rgba(255,255,255,0.97);backdrop-filter:blur(16px);border-bottom:1
 .panel.alt .panel-img-wrap{order:1;background:var(--white);padding-top:40px}
 .panel-step{font-size:0.7rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--scarlet);margin-bottom:1rem}
 .panel-copy h3{font-size:clamp(1.4rem,2.5vw,1.875rem);font-weight:600;line-height:1.15;letter-spacing:-0.03em;color:var(--text-primary);margin-bottom:0.75rem}
-.panel-hook{font-size:0.9375rem;font-weight:500;color:var(--text-primary);margin-bottom:0.875rem;line-height:1.55;opacity:0.7}
+.panel-hook{font-size:0.9375rem;font-weight:500;color:var(--text-muted);margin-bottom:0.875rem;line-height:1.55}
 .panel-copy p{font-size:0.9rem;color:var(--text-muted);font-weight:300;line-height:1.75;max-width:380px}
 
-/* POSITIONING */
-.pos-sec{background:var(--navy);padding:80px 2.5rem}
-.pos-tag{font-size:0.7rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:rgba(204,34,0,0.7);margin-bottom:1rem}
-.pos-h2{font-size:clamp(1.8rem,3vw,2.5rem);font-weight:600;line-height:1.1;letter-spacing:-0.03em;color:#fff;margin-bottom:0.75rem;max-width:520px}
-.pos-sub{font-size:0.9375rem;color:rgba(255,255,255,0.4);margin-bottom:3rem;font-weight:300;max-width:460px}
-.quad-wrap{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(255,255,255,0.07);border-radius:var(--r-lg);overflow:hidden;max-width:680px}
-.quad{padding:1.75rem 2rem;background:rgba(255,255,255,0.03)}
-.quad.hl{background:rgba(204,34,0,0.12);border:1px solid rgba(204,34,0,0.25)}
-.quad-tag{font-size:0.65rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.25);margin-bottom:0.6rem}
-.quad.hl .quad-tag{color:rgba(204,34,0,0.7)}
-.quad h4{font-size:0.9rem;font-weight:600;color:rgba(255,255,255,0.45);margin-bottom:0.3rem;letter-spacing:-0.01em}
-.quad.hl h4{color:#fff}
-.quad p{font-size:0.8rem;color:rgba(255,255,255,0.25);font-weight:300;line-height:1.6}
-.quad.hl p{color:rgba(255,255,255,0.5)}
-.quad-axis{display:flex;justify-content:space-between;margin-top:1rem;font-size:0.68rem;color:rgba(255,255,255,0.18);letter-spacing:0.1em;text-transform:uppercase;max-width:680px}
+/* PROOF LINE */
+.proof-sec{background:var(--white);padding:64px 2.5rem;border-top:1px solid var(--border-light);border-bottom:1px solid var(--border-light);text-align:center}
+.proof-line{font-size:clamp(1.1rem,2.5vw,1.5rem);font-weight:500;color:var(--text-primary);letter-spacing:-0.025em;line-height:1.4;max-width:680px;margin:0 auto}
+.proof-line em{font-style:normal;color:var(--scarlet)}
 
 /* PRICING */
 .pr-sec{background:var(--gray-100);padding:80px 2.5rem}
@@ -137,7 +128,7 @@ nav{background:rgba(255,255,255,0.97);backdrop-filter:blur(16px);border-bottom:1
 .cta-sec{background:var(--white);padding:80px 2.5rem;text-align:center;border-top:1px solid var(--border-light)}
 .cta-sec h2{font-size:clamp(1.8rem,3vw,2.5rem);font-weight:600;letter-spacing:-0.03em;color:var(--text-primary);margin-bottom:0.875rem;line-height:1.1}
 .cta-sec h2 em{font-style:normal;color:var(--scarlet)}
-.cta-sec p{font-size:0.9375rem;color:var(--text-muted);margin-bottom:2rem;font-weight:300;max-width:380px;margin-left:auto;margin-right:auto;line-height:1.7}
+.cta-sec p{font-size:0.9375rem;color:var(--text-muted);margin-bottom:2rem;font-weight:300;max-width:400px;margin-left:auto;margin-right:auto;line-height:1.7}
 .ef{display:flex;gap:0.75rem;justify-content:center;flex-wrap:wrap}
 .ef input{padding:11px 20px;border-radius:100px;border:1px solid var(--border-mid);font-size:0.9rem;font-family:var(--f);color:var(--text-primary);background:var(--gray-100);width:260px;outline:none;letter-spacing:-0.01em}
 .ef input:focus{border-color:var(--navy)}
@@ -152,11 +143,11 @@ footer{padding:1.5rem 2.5rem;border-top:1px solid var(--border-light);display:fl
 .f-links a:hover{color:var(--text-primary)}
 
 @media(max-width:800px){
+  .aud-inner{grid-template-columns:1fr;gap:2.5rem}
   .prob-grid,.pr-grid{grid-template-columns:1fr}
   .panel{grid-template-columns:1fr}
   .panel.alt .panel-copy{order:1}
   .panel.alt .panel-img-wrap{order:2}
-  .quad-wrap{grid-template-columns:1fr}
   .nav-links{display:none}
   footer{flex-direction:column;text-align:center}
 }
@@ -181,18 +172,15 @@ footer{padding:1.5rem 2.5rem;border-top:1px solid var(--border-light);display:fl
   <div class="nav-links">
     <a href="#product">Product</a>
     <a href="#pricing">Pricing</a>
-    <a href="mailto:hello@playbklabs.ai">Contact</a>
+    <a href="mailto:hello@playbklabs.com">Contact</a>
   </div>
-  <div class="nav-right">
-    <a href="#early-access" class="nav-cta">Request access</a>
-  </div>
+  <a href="#early-access" class="nav-cta">Request access</a>
 </nav>
 
-<!-- HERO -->
 <section class="hero">
   <div class="hero-label"><span></span>Now in early access</div>
-  <h1>Your deal doesn't need more admin.<br><em>It needs a Playbk.</em></h1>
-  <p class="hero-sub">AI-powered opportunity planning built for the AE — not the manager. Talk about your deal. The plan updates itself.</p>
+  <h1>Your deal doesn't need more admin.<br><em>It needs a <span style="color:#cc2200">Playbk</span>.</em></h1>
+  <p class="hero-sub">Built for early-stage teams closing enterprise deals without an enterprise sales org. Go fast. Qualify well. Protect the runway.</p>
   <div class="hero-btns">
     <a href="#early-access" class="btn-white">Request early access</a>
     <a href="#product" class="btn-outline">See how it works</a>
@@ -200,51 +188,85 @@ footer{padding:1.5rem 2.5rem;border-top:1px solid var(--border-light);display:fl
   <p class="hero-proof">Built on MEDDPPICC &nbsp;<span>·</span>&nbsp; No CRM required &nbsp;<span>·</span>&nbsp; Works day one</p>
 </section>
 
-<!-- STRIP -->
 <div class="strip" aria-hidden="true">
   <div class="strip-inner">
-    <span class="si hi">Qualification discipline</span><span class="sd"> · </span>
-    <span class="si">MEDDPPICC native</span><span class="sd"> · </span>
-    <span class="si hi">AI call analysis</span><span class="sd"> · </span>
-    <span class="si">Voice input</span><span class="sd"> · </span>
-    <span class="si hi">Deal health score</span><span class="sd"> · </span>
-    <span class="si">One-click deal review deck</span><span class="sd"> · </span>
-    <span class="si hi">AE-first always</span><span class="sd"> · </span>
-    <span class="si">Next-best-action coaching</span><span class="sd"> · </span>
-    <span class="si hi">Qualification discipline</span><span class="sd"> · </span>
-    <span class="si">MEDDPPICC native</span><span class="sd"> · </span>
-    <span class="si hi">AI call analysis</span><span class="sd"> · </span>
-    <span class="si">Voice input</span><span class="sd"> · </span>
-    <span class="si hi">Deal health score</span><span class="sd"> · </span>
-    <span class="si">One-click deal review deck</span><span class="sd"> · </span>
-    <span class="si hi">AE-first always</span><span class="sd"> · </span>
-    <span class="si">Next-best-action coaching</span><span class="sd"> · </span>
+    <span class="mi hi">Qualification discipline</span><span class="sd"> · </span>
+    <span class="mi">MEDDPPICC native</span><span class="sd"> · </span>
+    <span class="mi hi">AI call analysis</span><span class="sd"> · </span>
+    <span class="mi">Voice input</span><span class="sd"> · </span>
+    <span class="mi hi">Deal health score</span><span class="sd"> · </span>
+    <span class="mi">One-click deal review deck</span><span class="sd"> · </span>
+    <span class="mi hi">AE-first always</span><span class="sd"> · </span>
+    <span class="mi">Next-best-action coaching</span><span class="sd"> · </span>
+    <span class="mi hi">Qualification discipline</span><span class="sd"> · </span>
+    <span class="mi">MEDDPPICC native</span><span class="sd"> · </span>
+    <span class="mi hi">AI call analysis</span><span class="sd"> · </span>
+    <span class="mi">Voice input</span><span class="sd"> · </span>
+    <span class="mi hi">Deal health score</span><span class="sd"> · </span>
+    <span class="mi">One-click deal review deck</span><span class="sd"> · </span>
+    <span class="mi hi">AE-first always</span><span class="sd"> · </span>
+    <span class="mi">Next-best-action coaching</span><span class="sd"> · </span>
   </div>
 </div>
+
+<!-- AUDIENCE -->
+<section class="aud-sec">
+  <div class="aud-inner">
+    <div>
+      <p class="aud-tag">Who it's for</p>
+      <h2 class="aud-h2">You're running enterprise deals. Your stack is a spreadsheet.</h2>
+      <p class="aud-body">You're a founder or early sales hire at a Series A or B company. Your buyers expect a mature sales process — mutual action plans, executive alignment, a clear path to close. You're delivering it from a Google Sheet and a gut feeling.</p>
+      <p class="aud-body">Every bad deal costs months you don't have. Every deal you lose on qualification is a runway event. You need to move fast and qualify hard — at the same time.</p>
+      <div class="aud-callout">Playbk is the first deal planning tool built for teams that need to go fast, but can't afford to waste a single enterprise cycle.</div>
+    </div>
+    <div class="aud-stats">
+      <div class="stat">
+        <div class="stat-num">6<span>+</span></div>
+        <p>months of runway consumed by a single misqualified enterprise deal at Series A</p>
+      </div>
+      <div class="stat">
+        <div class="stat-num">72<span>%</span></div>
+        <p>of early-stage enterprise deals are lost to "no decision" — the qualification problem, not the product problem</p>
+      </div>
+      <div class="stat">
+        <div class="stat-num">0</div>
+        <p>sales methodology tools built for the rep first — until now</p>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- PROBLEM -->
 <section class="prob-sec">
   <div class="si-w">
-    <p class="sec-tag">The problem</p>
-    <h2 class="sec-h2">Every sales tool was built for the person who doesn't carry the number.</h2>
-    <p class="sec-sub">The AE is the data source, not the customer. That's the problem Playbk fixes.</p>
+    <p class="sec-tag">The paradox</p>
+    <h2 class="sec-h2">Your buyer expects enterprise process. You're running on instinct.</h2>
+    <p class="sec-sub">The tools that exist were built for mature sales orgs with RevOps teams and Salesforce admins. None of them were built for you.</p>
     <div class="prob-grid">
       <div class="prob-card">
-        <div class="prob-card-num">01</div>
-        <h3>Your CRM watches you.</h3>
-        <p>Forty fields to update so leadership can read a pipeline report. The AE is a data entry clerk. The manager is the customer.</p>
+        <div class="prob-num">01</div>
+        <h3>You can't afford a bad deal.</h3>
+        <p>At Series A, two lost quarters isn't a miss — it's existential. Bad qualification is a runway problem, not a sales problem. One wrong bet on an enterprise cycle can define the year.</p>
       </div>
       <div class="prob-card">
-        <div class="prob-card-num">02</div>
-        <h3>Call recording reports on you.</h3>
-        <p>Records every word. Scores your talk ratio. Builds dashboards your manager loves. None of it helps you win the deal in front of you.</p>
+        <div class="prob-num">02</div>
+        <h3>You don't have a sales ops team.</h3>
+        <p>No Salesforce admin. No RevOps. No methodology training. You're running 6-figure enterprise cycles on instinct, a shared spreadsheet, and a PowerPoint you update the night before the QBR.</p>
       </div>
       <div class="prob-card">
-        <div class="prob-card-num">03</div>
-        <h3>Your deal plan is a slide deck.</h3>
-        <p>Stale the moment it's written. Reviewed once a quarter. Never connected to what happened on yesterday's call.</p>
+        <div class="prob-num">03</div>
+        <h3>Your buyer doesn't know you're figuring it out.</h3>
+        <p>They expect a mutual action plan, economic buyer alignment, and a clear path to close. Playbk gives your team that rigour — without the overhead of an enterprise sales stack.</p>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- SOLUTION STATEMENT -->
+<section class="solve-sec">
+  <div class="solve-inner">
+    <p class="solve-tag">The Playbk</p>
+    <h2 class="solve-h2">Built for the rep. <em>Trusted by the manager.</em> The first deal planning tool that works for both.</h2>
   </div>
 </section>
 
@@ -296,20 +318,9 @@ footer{padding:1.5rem 2.5rem;border-top:1px solid var(--border-light);display:fl
   </div>
 </div>
 
-<!-- POSITIONING -->
-<section class="pos-sec">
-  <div class="si-w">
-    <p class="pos-tag">Where we sit</p>
-    <h2 class="pos-h2">The only tool in the top-right quadrant.</h2>
-    <p class="pos-sub">Deep qualification methodology. Zero AE admin burden. No one else is here.</p>
-    <div class="quad-wrap">
-      <div class="quad"><div class="quad-tag">Deep methodology, manager-first</div><h4>Clari, Gong, People.ai</h4><p>Real qualification intelligence. High AE admin burden. Built for the manager's dashboard.</p></div>
-      <div class="quad hl"><div class="quad-tag">⭑ Playbk Labs</div><h4>Frictionless + framework-native</h4><p>The AE wants to use it. Qualification depth is the byproduct. No one else occupies this space.</p></div>
-      <div class="quad"><div class="quad-tag">AE-friendly, shallow on methodology</div><h4>Dooly, Scratchpad, Notion</h4><p>Low friction for the rep. No qualification framework. Good notes app, not a deal plan.</p></div>
-      <div class="quad"><div class="quad-tag">Observation-first</div><h4>Momentum, Clari Copilot</h4><p>Tells you what happened. Requires Salesforce. Doesn't tell you what to do next.</p></div>
-    </div>
-    <div class="quad-axis"><span>← Admin burden</span><span>Frictionless →</span></div>
-  </div>
+<!-- PROOF LINE -->
+<section class="proof-sec">
+  <p class="proof-line">The best founders know how to build. <em>Playbk teaches them how to sell.</em></p>
 </section>
 
 <!-- PRICING -->
@@ -321,7 +332,7 @@ footer{padding:1.5rem 2.5rem;border-top:1px solid var(--border-light);display:fl
       <div class="pr-card">
         <div class="pr-tier">Starter</div>
         <div class="pr-amt">$99<span>/mo</span></div>
-        <div class="pr-desc">One AE. Full platform. No CRM required.</div>
+        <div class="pr-desc">One AE or founder. Full platform. No CRM required.</div>
         <div class="pr-divider"></div>
         <ul class="pr-items"><li>Unlimited opportunities</li><li>Full MEDDPPICC qualification</li><li>AI call analysis</li><li>Deal review deck generator</li><li>Voice input</li></ul>
         <a href="#early-access" class="pr-cta">Request access</a>
@@ -329,7 +340,7 @@ footer{padding:1.5rem 2.5rem;border-top:1px solid var(--border-light);display:fl
       <div class="pr-card feat">
         <div class="pr-tier">Team</div>
         <div class="pr-amt">$299<span>/mo</span></div>
-        <div class="pr-desc">Up to 5 AEs. Manager dashboard included.</div>
+        <div class="pr-desc">Up to 5 AEs. Manager dashboard. Shared pipeline view.</div>
         <div class="pr-divider"></div>
         <ul class="pr-items"><li>Everything in Starter</li><li>5 seats included</li><li>Team pipeline dashboard</li><li>Manager coaching view</li><li>HubSpot read integration</li></ul>
         <a href="#early-access" class="pr-cta">Request access</a>
@@ -348,8 +359,8 @@ footer{padding:1.5rem 2.5rem;border-top:1px solid var(--border-light);display:fl
 
 <!-- CTA -->
 <section class="cta-sec" id="early-access">
-  <h2>The AE sees a coach,<br>not a <em>compliance tool.</em></h2>
-  <p>Join the early access list. Onboarding AEs and sales leaders in June.</p>
+  <h2>Go fast.<br><em>Qualify well.</em><br>Protect the runway.</h2>
+  <p>Join the early access list. Onboarding early-stage teams and sales leaders in June.</p>
   <div class="ef">
     <input type="email" placeholder="your@email.com" aria-label="Email address">
     <button type="button">Request access</button>
@@ -362,7 +373,7 @@ footer{padding:1.5rem 2.5rem;border-top:1px solid var(--border-light);display:fl
   <nav class="f-links">
     <a href="#product">Product</a>
     <a href="#pricing">Pricing</a>
-    <a href="mailto:hello@playbklabs.ai">Contact</a>
+    <a href="mailto:hello@playbklabs.com">Contact</a>
   </nav>
 </footer>
 
