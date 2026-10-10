@@ -104,7 +104,16 @@ nav{background:rgba(255,255,255,0.97);backdrop-filter:blur(16px);border-bottom:1
 
 /* PRICING */
 .pr-sec{background:var(--gray-100);padding:80px 2.5rem}
-.pr-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:3rem;max-width:900px}
+.pr-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:1.75rem;max-width:900px}
+.pr-toggle{display:inline-flex;gap:4px;margin-top:2rem;padding:4px;border-radius:100px;background:var(--white);border:1px solid var(--border-light)}
+.pr-toggle button{border:0;background:transparent;padding:7px 16px;border-radius:100px;font:inherit;font-size:0.8rem;font-weight:500;color:var(--text-muted);cursor:pointer}
+.pr-toggle button.on{background:var(--navy);color:#fff}
+.pr-toggle .save{color:var(--scarlet);font-weight:600;margin-left:4px}
+.pr-toggle button.on .save{color:#ff8a70}
+.pr-bill{font-size:0.75rem;color:var(--text-muted);margin-top:0.3rem;min-height:1em}
+.pr-card.feat .pr-bill{color:rgba(255,255,255,0.4)}
+.pr-note{margin-top:1.5rem;font-size:0.8rem;color:var(--text-muted);max-width:900px}
+.pr-note strong{color:var(--text-primary);font-weight:600}
 .pr-card{background:var(--white);border:1px solid var(--border-light);border-radius:var(--r-lg);padding:2rem}
 .pr-card.feat{background:var(--navy);border-color:transparent}
 .pr-tier{font-size:0.7rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--gray-500);margin-bottom:1rem}
@@ -349,10 +358,15 @@ footer{padding:1.5rem 2.5rem;border-top:1px solid var(--border-light);display:fl
   <div class="si-w">
     <p class="sec-tag">Pricing</p>
     <h2 class="sec-h2">Simple. AE-scaled.</h2>
+    <div class="pr-toggle" role="group" aria-label="Billing period">
+      <button type="button" data-period="monthly" class="on" aria-pressed="true">Monthly</button>
+      <button type="button" data-period="annual" aria-pressed="false">Annual <span class="save">Save up to 20%</span></button>
+    </div>
     <div class="pr-grid">
       <div class="pr-card">
         <div class="pr-tier">Starter</div>
-        <div class="pr-amt">$99<span>/mo</span></div>
+        <div class="pr-amt"><span class="pr-num" data-monthly="49" data-annual="39" style="font-size:inherit;color:inherit;font-weight:inherit;letter-spacing:inherit">$49</span><span>/mo</span></div>
+        <div class="pr-bill" data-monthly="Billed monthly" data-annual="$468 billed annually">Billed monthly</div>
         <div class="pr-desc">One AE or founder. Full platform. No CRM required.</div>
         <div class="pr-divider"></div>
         <ul class="pr-items"><li>Unlimited opportunities</li><li>Full MEDDPPICC qualification</li><li>AI call analysis</li><li>Deal review deck generator</li><li>Voice input</li></ul>
@@ -360,7 +374,8 @@ footer{padding:1.5rem 2.5rem;border-top:1px solid var(--border-light);display:fl
       </div>
       <div class="pr-card feat">
         <div class="pr-tier">Team</div>
-        <div class="pr-amt">$299<span>/mo</span></div>
+        <div class="pr-amt"><span class="pr-num" data-monthly="299" data-annual="249" style="font-size:inherit;color:inherit;font-weight:inherit;letter-spacing:inherit">$299</span><span>/mo</span></div>
+        <div class="pr-bill" data-monthly="Billed monthly · 5 seats" data-annual="$2,988 billed annually · 5 seats">Billed monthly · 5 seats</div>
         <div class="pr-desc">Up to 5 AEs. Manager dashboard. Shared pipeline view.</div>
         <div class="pr-divider"></div>
         <ul class="pr-items"><li>Everything in Starter</li><li>5 seats included</li><li>Team pipeline dashboard</li><li>Manager coaching view</li><li>HubSpot read integration</li></ul>
@@ -369,12 +384,14 @@ footer{padding:1.5rem 2.5rem;border-top:1px solid var(--border-light);display:fl
       <div class="pr-card">
         <div class="pr-tier">Portfolio</div>
         <div class="pr-amt" style="font-size:1.75rem;letter-spacing:-0.03em">Custom</div>
+        <div class="pr-bill">Tailored to your portfolio</div>
         <div class="pr-desc">VC funds and growth teams. Full hierarchy across the portfolio.</div>
         <div class="pr-divider"></div>
         <ul class="pr-items"><li>Everything in Team</li><li>Portfolio-level rollup view</li><li>Fund → company → team → AE</li><li>Investor-grade health scoring</li><li>Custom onboarding</li></ul>
         <a href="#early-access" class="pr-cta">Talk to us</a>
       </div>
     </div>
+    <p class="pr-note">14-day free trial · No credit card required · <strong>Early access members lock in founding pricing.</strong></p>
   </div>
 </section>
 
@@ -409,6 +426,19 @@ footer{padding:1.5rem 2.5rem;border-top:1px solid var(--border-light);display:fl
     const month=next.toLocaleString('en-US',{month:'long'});
     el.textContent='Next onboarding cohort for early-stage teams and sales leaders starts in '+month+'.';
   }catch(e){}
+})();
+</script>
+<script>
+// Pricing toggle: monthly vs annual. Prices live in data attributes for easy Stripe mapping later.
+(function(){
+  const btns=document.querySelectorAll('.pr-toggle button');
+  if(!btns.length)return;
+  function setPeriod(p){
+    btns.forEach(function(b){const on=b.dataset.period===p;b.classList.toggle('on',on);b.setAttribute('aria-pressed',on)});
+    document.querySelectorAll('.pr-num').forEach(function(el){el.textContent='$'+el.dataset[p]});
+    document.querySelectorAll('.pr-bill[data-monthly]').forEach(function(el){el.textContent=el.dataset[p]});
+  }
+  btns.forEach(function(b){b.addEventListener('click',function(){setPeriod(b.dataset.period)})});
 })();
 </script>
 <script>
