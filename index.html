@@ -381,7 +381,7 @@ footer{padding:1.5rem 2.5rem;border-top:1px solid var(--border-light);display:fl
 <!-- CTA -->
 <section class="cta-sec" id="early-access">
   <h2>Go fast.<br><em>Qualify well.</em><br>Protect the runway.</h2>
-  <p>Join the early access list. Onboarding early-stage teams and sales leaders in June.</p>
+  <p>Join the early access list. <span id="cohort-line">Onboarding new cohorts of early-stage teams and sales leaders every month.</span></p>
   <div class="ef">
     <input type="email" placeholder="your@email.com" aria-label="Email address">
     <button type="button">Request access</button>
@@ -399,16 +399,46 @@ footer{padding:1.5rem 2.5rem;border-top:1px solid var(--border-light);display:fl
 </footer>
 
 <script>
+// Rolling cohort date: always shows next month, so the copy never goes stale.
+(function(){
+  try{
+    const el=document.getElementById('cohort-line');
+    if(!el)return;
+    const now=new Date();
+    const next=new Date(now.getFullYear(),now.getMonth()+1,1);
+    const month=next.toLocaleString('en-US',{month:'long'});
+    el.textContent='Next onboarding cohort for early-stage teams and sales leaders starts in '+month+'.';
+  }catch(e){}
+})();
+</script>
+<script>
 const btn=document.querySelector('.ef button');
 const inp=document.querySelector('.ef input');
-btn.addEventListener('click',function(){
+const FORM_ENDPOINT='https://formspree.io/f/mppqrwbg';
+async function submitEmail(){
   const v=inp.value.trim();
-  if(!v||!v.includes('@')){inp.focus();return}
-  btn.textContent="You're on the list ✓";
-  btn.style.background='#162636';
+  if(!v||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)){inp.focus();return}
+  const original=btn.textContent;
+  btn.textContent='Sending…';
   inp.disabled=true;btn.disabled=true;
-  gtag('event','request_access',{event_category:'conversion',event_label:v});
-});
+  try{
+    const res=await fetch(FORM_ENDPOINT,{
+      method:'POST',
+      headers:{'Content-Type':'application/json','Accept':'application/json'},
+      body:JSON.stringify({email:v,source:'playbklabs.com early access'})
+    });
+    if(!res.ok)throw new Error('Request failed');
+    btn.textContent="You're on the list ✓";
+    btn.style.background='#162636';
+    if(typeof gtag==='function')gtag('event','request_access',{event_category:'conversion'});
+  }catch(e){
+    btn.textContent='Try again';
+    inp.disabled=false;btn.disabled=false;
+    setTimeout(function(){btn.textContent=original},3000);
+  }
+}
+btn.addEventListener('click',submitEmail);
+inp.addEventListener('keydown',function(e){if(e.key==='Enter')submitEmail()});
 </script>
 </body>
 </html>
